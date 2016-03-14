@@ -5,7 +5,7 @@
 		.service('DataService', function($http, $q){
 
 			var getData = function(){
-				return $http.get('data.json')
+				return $http.get('js/shared/data.json')
 					.then(function(response){
 						return response;
 					});
@@ -23,11 +23,18 @@
 				});
 			};
 
+			var getLocationSound = function(title){
+				getData().then(function(response){
+					console.log(response.data.data);
+				});
+			}
+
 			return {
 				getData: getData,
 				getMeta: getMeta,
-				getLocations: getLocations
+				getLocations: getLocations,
+				getLocationSound: getLocationSound
 			};
-			
+
 		});
 })();
