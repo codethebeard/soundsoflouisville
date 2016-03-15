@@ -29,11 +29,18 @@
 				});
 			}
 
+			var getCoordinates = function(address){
+				return $http.get('http://maps.google.com/maps/api/geocode/json?address='+ address +'&sensor=false').then(function(response){
+					return response.data.results[0].geometry.location;
+				});
+			}
+
 			return {
 				getData: getData,
 				getMeta: getMeta,
 				getLocations: getLocations,
-				getLocationSound: getLocationSound
+				getLocationSound: getLocationSound,
+				getCoordinates: getCoordinates
 			};
 
 		});
