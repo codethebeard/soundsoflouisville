@@ -23,12 +23,6 @@
 				});
 			};
 
-			var getLocationSound = function(title){
-				getData().then(function(response){
-					console.log(response.data.data);
-				});
-			}
-
 			var getCoordinates = function(address){
 				return $http.get('http://maps.google.com/maps/api/geocode/json?address='+ address +'&sensor=false').then(function(response){
 					return response.data.results[0].geometry.location;
@@ -39,7 +33,6 @@
 				getData: getData,
 				getMeta: getMeta,
 				getLocations: getLocations,
-				getLocationSound: getLocationSound,
 				getCoordinates: getCoordinates
 			};
 

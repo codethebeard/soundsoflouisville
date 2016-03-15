@@ -14,7 +14,7 @@
 			<h1>Sounds Of Louisville</h1>
 			<p>Click on a location to hear the sound of the location.</p>
 			<ng-map zoom="{{zoom}}" center="{{position}}" tilt="45" map-type-id="SATELLITE">
-				<marker ng-repeat="marker in markers" on-click="loadAudio({{ marker }})" id="{{marker.id}}" position="{{marker.street_address}}, {{marker.city}} {{marker.state}}" title="{{ marker.title }}"></marker>
+				<marker ng-repeat="marker in markers" on-click="loadAudio({{ marker }})" id="{{marker.id}}" position="{{ marker.lat}}, {{marker.lng}}" title="{{ marker.title }}"></marker>
 			</ng-map>
 
 			<div class="audio-wrapper" ng-cloak ng-bind-html="audioPlayer"></div>
