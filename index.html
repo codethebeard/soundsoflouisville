@@ -77,7 +77,7 @@
 
 			<h1>Sounds Of Louisville</h1>
 			<p>Click on a location to hear the sounds of the city.</p>
-			<ng-map class="map" zoom="{{zoom}}" center="{{position}}" tilt="45" map-type-id="SATELLITE">
+			<ng-map class="map" zoom="{{zoom}}" center="{{position}}" zoom-to-include-markers='true' tilt="45" map-type-id="SATELLITE">
 				<marker ng-repeat="marker in markers" on-click="loadAudio({{ marker }})" id="{{marker.id}}" position="{{ marker.lat}}, {{marker.lng}}" title="{{ marker.title }}"></marker>
 			</ng-map>
 
