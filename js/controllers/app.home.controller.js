@@ -4,16 +4,16 @@
 	angular.module("app.home.controller", [])
 		.controller('HomeController', HomeController);
 
-	function HomeController(DataService, $scope, $sce, NgMap){
+	function HomeController(DataService, $scope, $sce, NgMap, Analytics ){
 
 		DataService.getLocations().then(function(response){
 			$scope.markers = response;
 		});
 
-
 		DataService.getMeta().then(function(response){
 			$scope.meta = response;
 		});
+
 		$scope.position = "Louisville, KY";
 		$scope.zoom = 14;
 
@@ -21,6 +21,7 @@
 			var position = "" + m.street_address + ", " + m.city + ", " + m.state;
 			var escaped_position = encodeURIComponent(position).replace(/%20/g, "+");
 
+			Analytics.trackEvent('audio', 'play', m.title);
 			DataService.getCoordinates(escaped_position).then(function(response){
 				$scope.position = "["+response.lat+","+response.lng+"]";
 				$scope.zoom = 19;
