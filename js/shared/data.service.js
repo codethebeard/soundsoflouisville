@@ -11,30 +11,23 @@
 					});
 			};
 
-			var getMeta = function(){
+			this.getMeta = function(){
 				return getData().then(function(response){
 					return response.data.meta;
 				});
 			};
 
-			var getLocations = function(){
+			this.getLocations = function(){
 				return getData().then(function(response){
 					return response.data.data;
 				});
 			};
 
-			var getCoordinates = function(address){
+			this.getCoordinates = function(address){
 				return $http.get('http://maps.google.com/maps/api/geocode/json?address='+ address +'&sensor=false').then(function(response){
 					return response.data.results[0].geometry.location;
 				});
 			}
-
-			return {
-				getData: getData,
-				getMeta: getMeta,
-				getLocations: getLocations,
-				getCoordinates: getCoordinates
-			};
 
 		});
 })();
